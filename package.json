@@ -29,6 +29,10 @@
   "dependencies": {
     "express": "^4.15.2",
     "mocha-junit-reporter": "^1.13.0",
+    "path": "^0.12.7",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "redux-devtools": "^3.4.0",
     "request": "^2.81.0",
     "supertest": "^3.0.0"
   }

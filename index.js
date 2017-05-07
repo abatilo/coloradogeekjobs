@@ -1,13 +1,12 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
 // Let Heroku decide the port number to use
 const PORT = process.env.PORT || 8080;
 
-app.get('/', (req, res) => {
-  res.send('coloradogeekjobs');
-});
+app.use('/', express.static(path.join(__dirname, 'app')));
 
 const server = app.listen(PORT);
 module.exports.server = server;
