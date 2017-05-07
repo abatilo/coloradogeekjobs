@@ -6,7 +6,7 @@ deployment:
   staging:
     branch: master
     heroku:
-      appname: loop-sample
+      appname: coloradogeekjobs
 
 dependencies:
   override:
