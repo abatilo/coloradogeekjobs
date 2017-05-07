@@ -6,7 +6,8 @@
   "scripts": {
     "test": "./node_modules/.bin/istanbul cover _mocha -- --reporter mocha-junit-reporter",
     "lint": "./node_modules/.bin/eslint .",
-    "coverage": "./node_modules/.bin/istanbul check-coverage"
+    "coverage": "./node_modules/.bin/istanbul check-coverage",
+    "start": "react-scripts start"
   },
   "repository": {
     "type": "git",
@@ -21,19 +22,21 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^11.1.2",
+    "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.0",
     "istanbul": "^0.4.5",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "mocha-junit-reporter": "^1.13.0",
+    "react-scripts": "0.9.5",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
     "express": "^4.15.2",
-    "mocha-junit-reporter": "^1.13.0",
     "path": "^0.12.7",
-    "react-redux": "^5.0.4",
-    "redux": "^3.6.0",
-    "redux-devtools": "^3.4.0",
-    "request": "^2.81.0",
-    "supertest": "^3.0.0"
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "request": "^2.81.0"
   }
 }

@@ -6,7 +6,7 @@ const app = express();
 // Let Heroku decide the port number to use
 const PORT = process.env.PORT || 8080;
 
-app.use('/', express.static(path.join(__dirname, 'app')));
+app.use('/', express.static(path.join(__dirname, 'src')));
 
 const server = app.listen(PORT);
 module.exports.server = server;
