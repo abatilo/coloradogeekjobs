@@ -1,15 +1,7 @@
-const chai = require('chai');
-const request = require('supertest');
 const app = require('../index');
-
+const chai = require('chai');
 const expect = chai.expect;
 
-describe('Express endpoint tests', () => {
-  beforeEach(() => {
-    server = app.server;
-  });
-
-  afterEach(() => {
-    server.close();
-  });
+describe('Sample', () => {
+  expect(0).equals(0);
 });
