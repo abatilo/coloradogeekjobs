@@ -1,0 +1,12 @@
+.Row {
+  text-align: left;
+}
+
+.Row-title {
+  color: blue;
+  font-size: large;
+}
+
+.Row-subtitle {
+  font-size: small;
+}
