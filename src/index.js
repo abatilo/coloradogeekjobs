@@ -7,6 +7,7 @@ const jobs = [
   'Software Engineer',
   'Mobile Engineer',
   'Backend Engineer',
+  'Frontend Engineer',
 ];
 
 ReactDOM.render(
