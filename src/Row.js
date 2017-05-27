@@ -10,4 +10,4 @@ function Row(props) {
   );
 }
 
-export default Row
+export default Row;
