@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://${this.props.base}/jobs`)
+    fetch(`${this.props.base}`)
       .then(resp => {
         return resp.json();
       })
