@@ -3,14 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-const jobs = [
-  'Software Engineer',
-  'Mobile Engineer',
-  'Backend Engineer',
-  'Frontend Engineer',
-];
+const BASE_URL = process.env.BASE_URL || 'localhost:8080';
 
 ReactDOM.render(
-  <App jobs={jobs}/>,
+  <App base={BASE_URL}/>,
   document.getElementById('root')
 );
