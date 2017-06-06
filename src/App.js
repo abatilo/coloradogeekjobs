@@ -6,28 +6,24 @@ import 'whatwg-fetch';
 class App extends Component {
   constructor(props) {
     super(props);
+    // Set state to be empty
     this.state = {
       jobs: []
     };
   }
 
   componentDidMount() {
+    // Make an http request to get data to populate
     fetch(`${this.props.base}`)
-      .then(resp => {
-        return resp.json();
-      })
-      .then(json => {
-        console.log(json.map(obj => obj.title));
-        const jobs = json.map(obj => obj.title);
-        this.setState({ jobs });
-      });
+      .then(resp => resp.json())
+      .then(jobs => this.setState({ jobs }));
   }
 
   render() {
     return (
       <div className="App">
         {
-          this.state.jobs.map((t) => <Row title={t}/>)
+          this.state.jobs.map((job) => <Row title={job.title} company={job.company}/>)
         }
       </div>
     );
