@@ -24,7 +24,7 @@ class App extends Component {
       <div className="App">
         {
           this.state.jobs.map((job) =>
-            <Row key={job._id} title={job.title} company={job.company}/>)
+            <Row key={job._id} title={job.title} company={job.company} date={job.date}/>)
         }
       </div>
     );
