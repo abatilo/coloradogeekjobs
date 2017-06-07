@@ -4,9 +4,9 @@ import App from './App';
 import './index.css';
 import runtimeEnv from '@mars/heroku-js-runtime-env';
 
-const BASE_URL = runtimeEnv().REACT_APP_BASE_URL || 'http://localhost:8080/jobs';
+const GET_URL = runtimeEnv().REACT_APP_GET_URL || 'http://localhost:8080/jobs';
 
 ReactDOM.render(
-  <App base={BASE_URL}/>,
+  <App get={GET_URL}/>,
   document.getElementById('root')
 );

@@ -14,7 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     // Make an http request to get data to populate
-    fetch(`${this.props.base}`)
+    fetch(`${this.props.get}`)
       .then(resp => resp.json())
       .then(jobs => this.setState({ jobs }));
   }
@@ -23,7 +23,8 @@ class App extends Component {
     return (
       <div className="App">
         {
-          this.state.jobs.map((job) => <Row title={job.title} company={job.company}/>)
+          this.state.jobs.map((job) =>
+            <Row key={job._id} title={job.title} company={job.company}/>)
         }
       </div>
     );
