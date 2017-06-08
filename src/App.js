@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
 import './App.css';
-import Row from './Row.js'
 import 'whatwg-fetch';
+import React, { Component } from 'react';
+import Row from './Row.js'
 
 class App extends Component {
   constructor(props) {
