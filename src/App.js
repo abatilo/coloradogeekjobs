@@ -1,5 +1,6 @@
 import './App.css';
 import 'whatwg-fetch';
+import Header from './Header.js'
 import React, { Component } from 'react';
 import Row from './Row.js'
 
@@ -22,6 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
         {
           this.state.jobs.map((job) =>
             <Row key={job._id} title={job.title} company={job.company} date={job.date}/>)
