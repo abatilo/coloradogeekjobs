@@ -1,8 +1,15 @@
 import './App.css';
 import 'whatwg-fetch';
-import Header from './Header.js'
+import Header from './Header.js';
 import React, { Component } from 'react';
-import Row from './Row.js'
+import Row from './Row.js';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+
+const Home = () => (<div>Testing</div>);
 
 class App extends Component {
   constructor(props) {
@@ -22,13 +29,22 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
-        {
-          this.state.jobs.map((job) =>
-            <Row key={job._id} title={job.title} company={job.company} date={job.date}/>)
-        }
-      </div>
+      <Router>
+        <div>
+          <Route path='/'>
+            <div className="App">
+              <Header />
+              {
+                this.state.jobs.map((job) =>
+                  <Row key={job._id} title={job.title} company={job.company} date={job.date}/>)
+              }
+            </div>
+          </Route>
+          <Route path='/post'>
+            <p>Post route</p>
+          </Route>
+        </div>
+      </Router>
     );
   }
 }
