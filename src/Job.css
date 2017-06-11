@@ -1,12 +1,12 @@
-.Row {
+.Job {
   text-align: left;
 }
 
-.Row-title {
+.Job-title {
   color: blue;
   font-size: large;
 }
 
-.Row-subtitle {
+.Job-subtitle {
   font-size: small;
 }

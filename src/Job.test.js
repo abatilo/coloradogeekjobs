@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Row from './Row';
+import Job from './Job';
 
-it('renders Row without crashing', () => {
+it('renders Job without crashing', () => {
   const row = document.createElement('row');
-  ReactDOM.render(<Row />, row);
+  ReactDOM.render(<Job />, row);
 });

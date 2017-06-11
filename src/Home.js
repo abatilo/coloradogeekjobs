@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 import React, { Component } from 'react';
 import Header from './Header.js';
-import Row from './Row.js';
+import Job from './Job.js';
 
 class Home extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Home extends Component {
       <Header />
       {
         this.state.jobs.map((job) =>
-          <Row key={job._id} title={job.title} company={job.company} date={job.date}/>)
+          <Job key={job._id} title={job.title} company={job.company} date={job.date}/>)
       }
       </div>
     );
