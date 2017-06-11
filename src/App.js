@@ -3,11 +3,8 @@ import 'whatwg-fetch';
 import Header from './Header.js';
 import React, { Component } from 'react';
 import Row from './Row.js';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import Post from './Post.js';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const Home = () => (<div>Testing</div>);
 
@@ -31,6 +28,12 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <ul>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/post'>Post</Link></li>
+          </ul>
+          <hr/>
+
           <Route path='/'>
             <div className="App">
               <Header />
@@ -40,9 +43,7 @@ class App extends Component {
               }
             </div>
           </Route>
-          <Route path='/post'>
-            <p>Post route</p>
-          </Route>
+          <Route path='/post' component={Post}/>
         </div>
       </Router>
     );
