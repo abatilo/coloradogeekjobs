@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 class Post extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      remote: false
+    };
     // Bind all the handlers
     this.handleCity = this.handleCity.bind(this);
     this.handleCompany = this.handleCompany.bind(this);
