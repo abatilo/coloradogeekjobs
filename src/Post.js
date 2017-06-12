@@ -1,3 +1,4 @@
+import 'whatwg-fetch';
 import React, { Component } from 'react';
 
 class Post extends React.Component {
@@ -19,6 +20,16 @@ class Post extends React.Component {
 
   handleSubmit(event) {
     console.log(this.state);
+    fetch(`${this.props.post}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    })
+    .then((res) => {
+      console.log(res);
+    });
     event.preventDefault();
   }
 

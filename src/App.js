@@ -9,7 +9,7 @@ function App(props) {
     <Router>
       <div>
         <Route exact path='/' render={() => <Home get={props.get} />}/>
-        <Route path='/post' component={Post}/>
+        <Route path='/post' render={() => <Post post={props.post} />}/>
       </div>
     </Router>
   );
