@@ -52,19 +52,43 @@ class Post extends React.Component {
   }
 
   handleSubmit(event) {
+    if (!this.state.city ||
+        !this.state.company ||
+        !this.state.description ||
+        !this.state.email ||
+        !this.state.how ||
+        !this.state.remote ||
+        !this.state.title ||
+        !this.state.url) {
+      console.log('Returning');
+      event.preventDefault();
+      this.setState({ problem: 'A field is missing'});
+      return;
+    }
+
     console.log(this.state);
     fetch(`${this.props.post}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(this.state)
+      body: JSON.stringify({
+        city: this.state.city,
+        company: this.state.company,
+        description: this.state.description,
+        email: this.state.email,
+        how: this.state.how,
+        remote: this.state.remote,
+        title: this.state.title,
+        url: this.state.url
+      })
     })
     .then((res) => {
       if (res.status === 200) {
         console.log(res);
       } else {
         console.log('Missing keys');
+        this.setState({ problem: true });
       }
     });
     event.preventDefault();
@@ -72,33 +96,36 @@ class Post extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          City: <textarea value={this.state.city} onChange={this.handleCity}/>
-        </label> <br/>
-        <label>
-          Company: <input type='text' value={this.state.company} onChange={this.handleCompany}/>
-        </label> <br/>
-        <label>
-          Description: <textarea value={this.state.description} onChange={this.handleDescription}/>
-        </label> <br/>
-        <label>
-          E-mail: <input type='text' value={this.state.email} onChange={this.handleEmail}/>
-        </label> <br/>
-        <label>
-          How to apply: <textarea value={this.state.how} onChange={this.handleHow}/>
-        </label> <br/>
-        <label>
-          Remote: <input type='checkbox' value={this.state.remote} onChange={this.handleRemote}/>
-        </label> <br/>
-        <label>
-          Title: <textarea value={this.state.title} onChange={this.handleTitle}/>
-        </label> <br/>
-        <label>
-          URL: <textarea value={this.state.url} onChange={this.handleURL}/>
-        </label> <br/>
-        <input type='submit' value='Submit' />
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            City: <textarea value={this.state.city} onChange={this.handleCity}/>
+          </label> <br/>
+          <label>
+            Company: <input type='text' value={this.state.company} onChange={this.handleCompany}/>
+          </label> <br/>
+          <label>
+            Description: <textarea value={this.state.description} onChange={this.handleDescription}/>
+          </label> <br/>
+          <label>
+            E-mail: <input type='text' value={this.state.email} onChange={this.handleEmail}/>
+          </label> <br/>
+          <label>
+            How to apply: <textarea value={this.state.how} onChange={this.handleHow}/>
+          </label> <br/>
+          <label>
+            Remote: <input type='checkbox' value={this.state.remote} onChange={this.handleRemote}/>
+          </label> <br/>
+          <label>
+            Title: <textarea value={this.state.title} onChange={this.handleTitle}/>
+          </label> <br/>
+          <label>
+            URL: <textarea value={this.state.url} onChange={this.handleURL}/>
+          </label> <br/>
+          <input type='submit' value='Submit' />
+        </form>
+        <label style={{color: 'red'}}>{this.state.problem}</label>
+      </div>
     );
   }
 }
