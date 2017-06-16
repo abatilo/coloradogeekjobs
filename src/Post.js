@@ -57,10 +57,8 @@ class Post extends React.Component {
         !this.state.description ||
         !this.state.email ||
         !this.state.how ||
-        !this.state.remote ||
         !this.state.title ||
         !this.state.url) {
-      console.log('Returning');
       event.preventDefault();
       this.setState({ problem: 'A field is missing'});
       return;
