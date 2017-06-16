@@ -25,7 +25,7 @@ class Home extends Component {
       <Header />
       {
         this.state.jobs.map((job) =>
-          <Job key={job._id} title={job.title} company={job.company} date={job.date}/>)
+          <Job key={job.id} title={job.title} company={job.company} date={job.date}/>)
       }
       </div>
     );
