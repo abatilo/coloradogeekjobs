@@ -6,7 +6,7 @@ function Header(props) {
     <div className="Header">
       <a href='https://www.twitter.com/aaronbatilo'>Follow me</a>
       <p>This site is <b>heavily</b> inspired by <a href="https://www.oldgeekjobs.com">oldgeekjobs.com</a></p>
-      <Link to='/post'>Post a job. $10 for 2 weeks</Link>
+      <Link to='/post'>Post a job. $20 for 30 days</Link>
     </div>
   );
 }
