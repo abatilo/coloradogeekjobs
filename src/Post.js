@@ -5,7 +5,15 @@ class Post extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      remote: false
+      city: '',
+      company: '',
+      description: '',
+      email: '',
+      how: '',
+      remote: false,
+      title: '',
+      url: '',
+      submit: ''
     };
     // Bind all the handlers
     this.handleCity = this.handleCity.bind(this);
