@@ -2,3 +2,12 @@
   padding: 2% 1%;
   text-align: center;
 }
+
+.App-table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.App-table-column {
+  width: 30%;
+}
