@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 function App(props) {
   return (
     <Router>
-      <div>
+      <div className='.App'>
         <Route exact path='/' render={() => <Home get={props.get} />}/>
         <Route path='/post' render={() => <Post post={props.post} />}/>
       </div>
