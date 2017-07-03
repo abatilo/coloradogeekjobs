@@ -9,5 +9,7 @@
 }
 
 .App-table-column {
-  width: 30%;
+  width: 600px;
+  height: 500px;
+  background: red;
 }
