@@ -63,7 +63,7 @@ class Home extends Component {
             <div className='.Job-list'>
               {
                 this.state.jobs.map((job) =>
-                  <Job click={this.handleClick} key={job.id} id={job.id} title={job.title} company={job.company} date={job.date}/>)
+                  <Job click={this.handleClick} key={job.id} id={job.id} title={job.title} city={job.city} date={job.date}/>)
               }
             </div>
             </td>

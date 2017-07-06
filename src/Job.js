@@ -7,7 +7,7 @@ function Job(props) {
   return (
     <div onClick={() => props.click(props.id)} className="Job">
       <div className="Job-title">{props.title} - Posted {moment(props.date).fromNow()}</div>
-      <div className="Job-subtitle">{props.company}</div>
+      <div className="Job-subtitle">{props.city}</div>
     </div>
   );
 }
