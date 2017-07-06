@@ -6,3 +6,5 @@ A website for tech jobs available specifically in Colorado. This site is heavily
 [ ] Validate the city from a list of cities in Colorado
 [ ] Style the post form to not look so bad
 [ ] Style the job listings to not look so bad
+[ ] Make submitting a job show a success message
+[ ] Maybe do a redirect after submitting a job?
