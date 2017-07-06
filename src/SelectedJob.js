@@ -4,14 +4,13 @@ import React, { Component } from 'react';
 function SelectedJob(props) {
   return (
     <div className='SelectedJob'>
-      <p>{props.city}</p>
-      <p>{props.company}</p>
-      <p>{props.description}</p>
-      <p>{props.email}</p>
-      <p>{props.how}</p>
-      <p>{props.remote}</p>
-      <p>{props.title}</p>
-      <p>{props.url}</p>
+      <p><b>Job title:</b><br/>{props.title}</p>
+      <p><b>City:</b><br/>{props.city}</p>
+      <p><b>Company:</b><br/>{props.company}</p>
+      <p><b>Website:</b><br/>{props.url}</p>
+      <p><b>Job description:</b><br/>{props.description}</p>
+      <p><b>How to apply:</b><br/>{props.how}</p>
+      <p><b>{props.remote ? 'Allows for remote' : 'Does not allow remote'}</b><br/></p>
     </div>
   );
 }

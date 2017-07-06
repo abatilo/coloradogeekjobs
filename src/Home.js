@@ -57,28 +57,30 @@ class Home extends Component {
       <div className='App'>
         <Header />
         <table className='App-table'>
-          <tr>
-          <td className='App-table-column'>
-          <div className='.Job-list'>
-            {
-              this.state.jobs.map((job) =>
-                <Job click={this.handleClick} key={job.id} id={job.id} title={job.title} company={job.company} date={job.date}/>)
-            }
-          </div>
-          </td>
-          <td className='App-table-column'>
-          <SelectedJob className='.SelectedJob'
-            city={this.state.selectedJobCity}
-            company={this.state.selectedJobCompany}
-            description={this.state.selectedJobDescription}
-            email={this.state.selectedJobEmail}
-            how={this.state.selectedJobHow}
-            remote={this.state.selectedJobRemote}
-            title={this.state.selectedJobTitle}
-            url={this.state.selectedJobUrl}
-          />
-          </td>
-          </tr>
+          <tbody>
+            <tr>
+            <td className='App-table-column'>
+            <div className='.Job-list'>
+              {
+                this.state.jobs.map((job) =>
+                  <Job click={this.handleClick} key={job.id} id={job.id} title={job.title} company={job.company} date={job.date}/>)
+              }
+            </div>
+            </td>
+            <td className='App-table-column'>
+            <SelectedJob className='.SelectedJob'
+              city={this.state.selectedJobCity}
+              company={this.state.selectedJobCompany}
+              description={this.state.selectedJobDescription}
+              email={this.state.selectedJobEmail}
+              how={this.state.selectedJobHow}
+              remote={this.state.selectedJobRemote}
+              title={this.state.selectedJobTitle}
+              url={this.state.selectedJobUrl}
+            />
+            </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     );
