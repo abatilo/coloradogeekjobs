@@ -68,6 +68,7 @@ class Home extends Component {
               />)
           }
         </div>
+        { this.state.selectedJobTitle ?
         <SelectedJob className='.SelectedJob'
           city={this.state.selectedJobCity}
           company={this.state.selectedJobCompany}
@@ -77,7 +78,7 @@ class Home extends Component {
           remote={this.state.selectedJobRemote}
           title={this.state.selectedJobTitle}
           url={this.state.selectedJobUrl}
-        />
+        /> : null }
       </div>
     );
   }
