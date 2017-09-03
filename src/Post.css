@@ -39,7 +39,6 @@ input[type=submit]:hover {
 @media (min-width: 768px) {
   #Post-div {
     width: 768px;
-    float: center;
     margin-left: auto;
     margin-right: auto;
   }

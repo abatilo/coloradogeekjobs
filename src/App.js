@@ -1,4 +1,3 @@
-import './App.css';
 import React, { Component } from 'react';
 import Home from './Home.js';
 import Post from './Post.js';

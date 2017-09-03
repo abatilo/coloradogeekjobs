@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './Header.css';
 
 function Header(props) {
   return (
-    <div className="Header">
-      <Link to='/post'>Post a job. <b>Free</b> for 30 days</Link>
-    </div>
+    <Link to='/post' className='postLink'>Post a job. <b>Free</b> for 30 days</Link>
   );
 }
 

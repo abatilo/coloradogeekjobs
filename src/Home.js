@@ -3,6 +3,7 @@ import Header from './Header.js';
 import Job from './Job.js';
 import React, { Component } from 'react';
 import SelectedJob from './SelectedJob.js';
+import './Home.css';
 
 class Home extends Component {
   constructor(props) {
@@ -27,8 +28,7 @@ class Home extends Component {
     // Make an http request to get data to populate
     fetch(`${this.props.get}`)
       .then(resp => resp.json())
-      .then(jobs => this.setState({ jobs }));
-  }
+      .then(jobs => this.setState({ jobs })); }
 
   handleClick(id) {
     /*
@@ -54,20 +54,20 @@ class Home extends Component {
 
   render() {
     return (
-      <div className='App'>
+      <div id='Home-div'>
         <Header />
-        <table className='App-table'>
+        <table>
           <tbody>
             <tr>
-            <td className='App-table-column'>
-            <div className='.Job-list'>
+            <td>
+            <div>
               {
                 this.state.jobs.map((job) =>
                   <Job click={this.handleClick} key={job.id} id={job.id} title={job.title} city={job.city} date={job.date}/>)
               }
             </div>
             </td>
-            <td className='App-table-column'>
+            <td>
             <SelectedJob className='.SelectedJob'
               city={this.state.selectedJobCity}
               company={this.state.selectedJobCompany}
