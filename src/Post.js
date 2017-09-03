@@ -1,3 +1,4 @@
+import './Post.css';
 import 'whatwg-fetch';
 import React, { Component } from 'react';
 
@@ -40,8 +41,8 @@ class Post extends React.Component {
   handleEmail(event) {
     this.setState({email: event.target.value});
   }
-
   handleHow(event) {
+
     this.setState({how: event.target.value});
   }
 
@@ -87,7 +88,7 @@ class Post extends React.Component {
         console.log(res);
       } else {
         console.log('Missing keys');
-        this.setState({ problem: true });
+        this.setState({ problem: 'This job could not be posted because of missing data' });
       }
     });
     event.preventDefault();
@@ -97,27 +98,27 @@ class Post extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            City: <textarea value={this.state.city} onChange={this.handleCity}/>
-          </label> <br/>
-          <label>
-            Company: <input type='text' value={this.state.company} onChange={this.handleCompany}/>
-          </label> <br/>
-          <label>
-            Description: <textarea value={this.state.description} onChange={this.handleDescription}/>
-          </label> <br/>
-          <label>
-            E-mail: <input type='text' value={this.state.email} onChange={this.handleEmail}/>
-          </label> <br/>
-          <label>
-            How to apply: <textarea value={this.state.how} onChange={this.handleHow}/>
-          </label> <br/>
-          <label>
-            Title: <textarea value={this.state.title} onChange={this.handleTitle}/>
-          </label> <br/>
-          <label>
-            URL: <textarea value={this.state.url} onChange={this.handleURL}/>
-          </label> <br/>
+          <label for='city'>City</label>
+          <textarea id='city' name='city' placeholder='Denver' rows='1' value={this.state.city} onChange={this.handleCity}/>
+
+          <label for="company">Company</label>
+          <textarea id='company' name='company' placeholder='YourCompany LLC' rows='1' value={this.state.company} onChange={this.handleCompany}/>
+
+          <label for='description'>Description</label>
+          <textarea id='description' name='description' placeholder='Write code for...' rows='12' value={this.state.description} onChange={this.handleDescription}/>
+
+          <label for='email'>Email (Used only by me if there's a problem)</label>
+          <textarea id='email' name='email' placeholder='you@yourwebsite.com' rows='1' value={this.state.email} onChange={this.handleEmail}/>
+
+          <label for='how'>How</label>
+          <textarea id='how' name='how' placeholder='Send an email to...' rows='8' value={this.state.how} onChange={this.handleHow}/>
+
+          <label for='title'>Title</label>
+          <textarea id='title' name='title' placeholder='Software Engineer' rows='1' value={this.state.title} onChange={this.handleTitle}/>
+
+          <label for='url'>URL</label>
+          <textarea id='url' name='url' placeholder='http://' rows='1' value={this.state.url} onChange={this.handleURL}/>
+
           <input type='submit' value='Submit' />
         </form>
         <label style={{color: 'red'}}>{this.state.problem}</label>
