@@ -56,32 +56,28 @@ class Home extends Component {
     return (
       <div id='Home-div'>
         <Header />
-        <table>
-          <tbody>
-            <tr>
-            <td>
-            <div>
-              {
-                this.state.jobs.map((job) =>
-                  <Job click={this.handleClick} key={job.id} id={job.id} title={job.title} city={job.city} date={job.date}/>)
-              }
-            </div>
-            </td>
-            <td>
-            <SelectedJob className='.SelectedJob'
-              city={this.state.selectedJobCity}
-              company={this.state.selectedJobCompany}
-              description={this.state.selectedJobDescription}
-              email={this.state.selectedJobEmail}
-              how={this.state.selectedJobHow}
-              remote={this.state.selectedJobRemote}
-              title={this.state.selectedJobTitle}
-              url={this.state.selectedJobUrl}
-            />
-            </td>
-            </tr>
-          </tbody>
-        </table>
+        <div id='Job-list'>
+          {
+            this.state.jobs.map((job) =>
+              <Job click={this.handleClick} key={job.id}
+                id={job.id}
+                title={job.title}
+                company={job.company}
+                city={job.city}
+                date={job.date}
+              />)
+          }
+        </div>
+        <SelectedJob className='.SelectedJob'
+          city={this.state.selectedJobCity}
+          company={this.state.selectedJobCompany}
+          description={this.state.selectedJobDescription}
+          email={this.state.selectedJobEmail}
+          how={this.state.selectedJobHow}
+          remote={this.state.selectedJobRemote}
+          title={this.state.selectedJobTitle}
+          url={this.state.selectedJobUrl}
+        />
       </div>
     );
   }

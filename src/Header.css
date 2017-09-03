@@ -1,3 +1,5 @@
 .postLink {
+  text-align: right;
   float: right;
+  width: 100%;
 }

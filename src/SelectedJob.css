@@ -1,3 +1,5 @@
 .SelectedJob {
   text-align: left;
+  position: relative;
+  float: left;
 }
