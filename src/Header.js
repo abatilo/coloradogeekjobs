@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 function Header(props) {
   return (
     <div className="Header">
-      <a href='https://www.twitter.com/aaronbatilo'>Follow me</a>
-      <p>This site is <b>heavily</b> inspired by <a href="https://www.oldgeekjobs.com">oldgeekjobs.com</a></p>
       <Link to='/post'>Post a job. <b>Free</b> for 30 days</Link>
     </div>
   );
