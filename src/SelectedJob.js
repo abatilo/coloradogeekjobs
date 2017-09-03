@@ -10,7 +10,6 @@ function SelectedJob(props) {
       <p><b>Website:</b><br/>{props.url}</p>
       <p><b>Job description:</b><br/>{props.description}</p>
       <p><b>How to apply:</b><br/>{props.how}</p>
-      <p><b>{props.remote ? 'Allows for remote' : 'Does not allow remote'}</b><br/></p>
     </div>
   );
 }
