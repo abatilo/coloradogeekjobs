@@ -10,7 +10,6 @@ class Post extends React.Component {
       description: '',
       email: '',
       how: '',
-      remote: false,
       title: '',
       url: '',
       submit: ''
@@ -21,7 +20,6 @@ class Post extends React.Component {
     this.handleDescription = this.handleDescription.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handleHow = this.handleHow.bind(this);
-    this.handleRemote = this.handleRemote.bind(this);
     this.handleTitle = this.handleTitle.bind(this);
     this.handleURL = this.handleURL.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,10 +43,6 @@ class Post extends React.Component {
 
   handleHow(event) {
     this.setState({how: event.target.value});
-  }
-
-  handleRemote(event) {
-    this.setState({remote: event.target.value});
   }
 
   handleTitle(event) {
@@ -84,7 +78,6 @@ class Post extends React.Component {
         description: this.state.description,
         email: this.state.email,
         how: this.state.how,
-        remote: this.state.remote,
         title: this.state.title,
         url: this.state.url
       })
@@ -118,9 +111,6 @@ class Post extends React.Component {
           </label> <br/>
           <label>
             How to apply: <textarea value={this.state.how} onChange={this.handleHow}/>
-          </label> <br/>
-          <label>
-            Remote: <input type='checkbox' value={this.state.remote} onChange={this.handleRemote}/>
           </label> <br/>
           <label>
             Title: <textarea value={this.state.title} onChange={this.handleTitle}/>
