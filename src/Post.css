@@ -2,8 +2,8 @@
 textarea, select {
   width: 100%;
   margin: 8px 0;
-  padding: 8px 12px;
   display: inline-block;
+  padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
