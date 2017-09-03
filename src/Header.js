@@ -4,7 +4,9 @@ import './Header.css';
 
 function Header(props) {
   return (
-    <Link to='/post' className='postLink'>Post a job. <b>Free</b> for 30 days</Link>
+    <div id='postLinkDiv'>
+      <Link to='/post' className='postLink'>Post a job. <b>Free</b> for 30 days</Link>
+    </div>
   );
 }
 

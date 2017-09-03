@@ -1,5 +1,9 @@
 .postLink {
   text-align: right;
   float: right;
+}
+
+#postLinkDiv {
   width: 100%;
+  overflow: hidden;
 }
