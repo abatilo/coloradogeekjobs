@@ -1,6 +1,7 @@
 import './Post.css';
 import 'whatwg-fetch';
 import React, { Component } from 'react';
+import { Redirect} from 'react-router';
 
 class Post extends React.Component {
   constructor(props) {
@@ -86,6 +87,8 @@ class Post extends React.Component {
     .then((res) => {
       if (res.status === 200) {
         console.log(res);
+        // https://gist.github.com/verticalgrain/195468e69f2ac88f3d9573d285b09764
+        this.setState({ fireRedirect: true });
       } else {
         console.log('Missing keys');
         this.setState({ problem: 'This job could not be posted because of missing data' });
@@ -95,6 +98,7 @@ class Post extends React.Component {
   }
 
   render() {
+    const { fireRedirect } = this.state;
     return (
       <div id='Post-div'>
         <form onSubmit={this.handleSubmit}>
@@ -416,6 +420,9 @@ class Post extends React.Component {
           <input type='submit' value='Submit' />
         </form>
         <label style={{color: 'red'}}>{this.state.problem}</label>
+        {fireRedirect && (
+          <Redirect to='/'/>
+        )}
       </div>
     );
   }
