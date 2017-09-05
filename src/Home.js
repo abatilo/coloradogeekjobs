@@ -11,12 +11,9 @@ class Home extends Component {
     // Set state to be empty
     this.state = {
       jobs: [],
-      selectedJobCity: '',
-      selectedJobCompany: '',
+      selectedJobId: -1,
       selectedJobDescription: '',
-      selectedJobEmail: '',
       selectedJobHow: '',
-      selectedJobRemote: '',
       selectedJobTitle: '',
       selectedJobUrl: ''
     };
@@ -39,12 +36,9 @@ class Home extends Component {
       let job = this.state.jobs[i];
       if (job.id === id) {
         this.setState({
-          selectedJobCity: job.city,
-          selectedJobCompany: job.company,
+          selectedJobId: job.id,
           selectedJobDescription: job.description,
-          selectedJobEmail: job.email,
           selectedJobHow: job.how,
-          selectedJobRemote: job.remote,
           selectedJobTitle: job.title,
           selectedJobUrl: job.url
         });
@@ -59,25 +53,23 @@ class Home extends Component {
         <div id='Job-list'>
           {
             this.state.jobs.map((job) =>
-              <Job click={this.handleClick} key={job.id}
+              <Job
+                click={this.handleClick}
+                key={job.id}
                 id={job.id}
                 title={job.title}
                 company={job.company}
                 city={job.city}
                 date={job.date}
+                selectedJob={this.state.selectedJobId}
+                className={'Job' + (this.state.selectedJobId === job.id ? ' Job-selected' : '')}
               />)
           }
         </div>
-        { this.state.selectedJobTitle ?
+        { this.state.selectedJobId !== -1 ?
         <SelectedJob className='.SelectedJob'
-          city={this.state.selectedJobCity}
-          company={this.state.selectedJobCompany}
           description={this.state.selectedJobDescription}
-          email={this.state.selectedJobEmail}
           how={this.state.selectedJobHow}
-          remote={this.state.selectedJobRemote}
-          title={this.state.selectedJobTitle}
-          url={this.state.selectedJobUrl}
         /> : null }
       </div>
     );
