@@ -2,4 +2,9 @@
   text-align: left;
   position: relative;
   float: left;
+  padding: 8px 12px;
+}
+
+#descriptionLabel, #howLabel {
+  font-weight: bold;
 }
