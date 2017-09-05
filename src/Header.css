@@ -1,6 +1,15 @@
 .postLink {
-  text-align: right;
+  background-color: #4CAF50;
+  border-radius: 4px;
+  color: white;
   float: right;
+  padding: 8px 12px;
+  text-align: right;
+  text-decoration: none;
+}
+
+.postLink:hover {
+  background-color: #45A049;
 }
 
 #postLinkDiv {
