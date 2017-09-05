@@ -102,16 +102,16 @@ class Post extends React.Component {
     return (
       <div id='Post-div'>
         <form onSubmit={this.handleSubmit}>
-          <label for='title'>Title</label>
+          <label htmlFor='title'>Title</label>
           <textarea id='title' name='title' placeholder='Software Engineer' rows='1' value={this.state.title} onChange={this.handleTitle}/>
 
-          <label for="company">Company</label>
+          <label htmlFor="company">Company</label>
           <textarea id='company' name='company' placeholder='YourCompany LLC' rows='1' value={this.state.company} onChange={this.handleCompany}/>
 
-          <label for='url'>URL</label>
+          <label htmlFor='url'>URL</label>
           <textarea id='url' name='url' placeholder='https://' rows='1' value={this.state.url} onChange={this.handleURL}/>
 
-          <label for='city'>City</label>
+          <label htmlFor='city'>City</label>
           <select id='city' name='city' value={this.state.city} onChange={this.handleCity}>
             <option value='Aguilar'>Aguilar</option>
             <option value='Akron'>Akron</option>
@@ -408,13 +408,13 @@ class Post extends React.Component {
             <option value='Yuma'>Yuma</option>
           </select>
 
-          <label for='description'>Description</label>
+          <label htmlFor='description'>Description</label>
           <textarea id='description' name='description' placeholder='Write code for...' rows='3' value={this.state.description} onChange={this.handleDescription}/>
 
-          <label for='how'>How to apply</label>
+          <label htmlFor='how'>How to apply</label>
           <textarea id='how' name='how' placeholder='Send an email to...' rows='2' value={this.state.how} onChange={this.handleHow}/>
 
-          <label for='email'>Email (Not shared, used only by me if there's a problem)</label>
+          <label htmlFor='email'>Email (Not shared, used only by me if there's a problem)</label>
           <textarea id='email' name='email' placeholder='you@yourwebsite.com' rows='1' value={this.state.email} onChange={this.handleEmail}/>
 
           <input type='submit' value='Submit' />
