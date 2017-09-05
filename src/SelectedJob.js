@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import SmartText from 'react-smart-text'
 
 // This is what we're hunting in the text.
-const emailRegex = /\w+@.+?\.(com)/g
+const emailRegex = /\w+@.+?\.(\w+)/g
 
 // This is what we want to replace matches with.
 const Email = (props) =>
