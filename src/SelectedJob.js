@@ -1,26 +1,20 @@
 import './SelectedJob.css';
 import React, { Component } from 'react';
-import SmartText from 'react-smart-text'
-
-// This is what we're hunting in the text.
-const emailRegex = /\w+@.+?\.(\w+)/g
-
-// This is what we want to replace matches with.
-const Email = (props) =>
-  <a href={`mailto:${props.text}`}>{props.text}</a>
+import Text from 'react-format-text';
 
 function SelectedJob(props) {
   return (
     <div className='SelectedJob'>
-      <label htmlFor='description' id='descriptionLabel'>Description</label>
-      <SmartText id='description' name='description' regex={emailRegex} component={Email}>
+      <label htmlFor='description' id='descriptionLabel'>Description</label><br/>
+      {console.log(props.description)}
+      <Text id='description' name='description'>
         {props.description}
-      </SmartText>
-      <br/>
-      <label htmlFor='how' id='howLabel'>How to apply</label>
-      <SmartText id='how' name='how' regex={emailRegex} component={Email}>
+      </Text>
+      <br/><br/>
+      <label htmlFor='how' id='howLabel'>How to apply</label><br/>
+      <Text id='how' name='how'>
         {props.how}
-      </SmartText>
+      </Text>
     </div>
   );
 }
