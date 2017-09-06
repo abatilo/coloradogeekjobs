@@ -17,6 +17,8 @@
 .Job-title {
   color: #1E88E5;
   font-size: large;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .Job-subtitle {

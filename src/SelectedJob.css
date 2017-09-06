@@ -2,7 +2,14 @@
   text-align: left;
   position: relative;
   float: left;
-  padding: 8px 12px;
+  padding: 0px 0px 0px 8px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .SelectedJob {
+    width: 55%;
+  }
 }
 
 #descriptionLabel, #howLabel {

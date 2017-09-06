@@ -5,7 +5,7 @@ textarea, select {
   display: inline-block;
   padding: 8px 12px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
   box-sizing: border-box;
   resize: none;
 }
@@ -15,7 +15,7 @@ textarea, select {
 }
 
 .submit {
-  border-radius: 4px;
+  border-radius: 5px;
   border: none;
   color: white;
   cursor: pointer;

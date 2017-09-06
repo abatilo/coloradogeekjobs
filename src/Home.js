@@ -71,7 +71,6 @@ class Home extends Component {
           description={this.state.selectedJobDescription}
           how={this.state.selectedJobHow}
         /> : null }
-        <a id='twitter' href='https://www.twitter.com/aaronbatilo'>@aaronbatilo</a>
       </div>
     );
   }
