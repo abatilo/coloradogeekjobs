@@ -7,14 +7,7 @@ class Post extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: 'Denver',
-      company: '',
-      description: '',
-      email: '',
-      how: '',
-      title: '',
-      url: '',
-      submit: ''
+      city: 'Denver'
     };
     // Bind all the handlers
     this.handleCity = this.handleCity.bind(this);
@@ -55,6 +48,25 @@ class Post extends React.Component {
     this.setState({url: event.target.value});
   }
 
+  disableButton() {
+      return (
+        !this.state.title ||
+        !this.state.company ||
+        !this.state.url ||
+        !this.state.description ||
+        !this.state.how ||
+        !this.state.email
+      );
+  }
+
+  styleRed(field) {
+    return field ? null : '#EF5350';
+  }
+
+  addRequired(field) {
+    return field ? null : ' - Required';
+  }
+
   handleSubmit(event) {
     if (!this.state.city ||
         !this.state.company ||
@@ -64,11 +76,9 @@ class Post extends React.Component {
         !this.state.title ||
         !this.state.url) {
       event.preventDefault();
-      this.setState({ problem: 'A field is missing'});
       return;
     }
 
-    this.setState({ problem: '' });
     fetch(`${this.props.post}`, {
       method: 'POST',
       headers: {
@@ -89,32 +99,43 @@ class Post extends React.Component {
         console.log(res);
         // https://gist.github.com/verticalgrain/195468e69f2ac88f3d9573d285b09764
         this.setState({ fireRedirect: true });
-      } else {
-        console.log('Missing keys');
-        this.setState({ problem: 'This job could not be posted because of missing data' });
       }
     });
     event.preventDefault();
   }
 
   render() {
-    const { fireRedirect } = this.state;
-    const { problem } = this.state;
+    const {
+      fireRedirect,
+      title,
+      company,
+      url,
+      city,
+      description,
+      how,
+      email
+    } = this.state;
 
     return (
       <div id='Post-div'>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor='title'>Title</label>
-          <textarea id='title' name='title' placeholder='Software Engineer' rows='1' value={this.state.title} onChange={this.handleTitle}/>
+          <label htmlFor='title' style={{color: this.styleRed(title)}}>
+            Title{this.addRequired(title)}
+          </label>
+          <textarea id='title' name='title' placeholder='Software Engineer' rows='1' value={title} onChange={this.handleTitle}/>
 
-          <label htmlFor="company">Company</label>
-          <textarea id='company' name='company' placeholder='YourCompany LLC' rows='1' value={this.state.company} onChange={this.handleCompany}/>
+          <label htmlFor="company" style={{color: this.styleRed(company)}}>
+            Company{this.addRequired(company)}
+          </label>
+          <textarea id='company' name='company' placeholder='YourCompany LLC' rows='1' value={company} onChange={this.handleCompany}/>
 
-          <label htmlFor='url'>URL</label>
-          <textarea id='url' name='url' placeholder='https://' rows='1' value={this.state.url} onChange={this.handleURL}/>
+          <label htmlFor='url' style={{color: this.styleRed(url)}}>
+            URL{this.addRequired(url)}
+          </label>
+          <textarea id='url' name='url' placeholder='https://' rows='1' value={url} onChange={this.handleURL}/>
 
           <label htmlFor='city'>City</label>
-          <select id='city' name='city' value={this.state.city} onChange={this.handleCity}>
+          <select id='city' name='city' value={city} onChange={this.handleCity}>
             <option value='Aguilar'>Aguilar</option>
             <option value='Akron'>Akron</option>
             <option value='Alamosa'>Alamosa</option>
@@ -410,18 +431,26 @@ class Post extends React.Component {
             <option value='Yuma'>Yuma</option>
           </select>
 
-          <label htmlFor='description'>Description</label>
-          <textarea id='description' name='description' placeholder='Write code for...' rows='3' value={this.state.description} onChange={this.handleDescription}/>
+          <label htmlFor='description' style={{color: this.styleRed(description)}}>
+            Description{this.addRequired(description)}
+          </label>
+          <textarea id='description' name='description' placeholder='Write code for...' rows='3' value={description} onChange={this.handleDescription}/>
 
-          <label htmlFor='how'>How to apply</label>
-          <textarea id='how' name='how' placeholder='Send an email to...' rows='2' value={this.state.how} onChange={this.handleHow}/>
+          <label htmlFor='how' style={{color: this.styleRed(how)}}>
+            How to apply{this.addRequired(how)}
+          </label>
+          <textarea id='how' name='how' placeholder='Send an email to...' rows='2' value={how} onChange={this.handleHow}/>
 
-          <label htmlFor='email'>Email (Not shared, used only by me if there's a problem)</label>
-          <textarea id='email' name='email' placeholder='you@yourwebsite.com' rows='1' value={this.state.email} onChange={this.handleEmail}/>
+          <label htmlFor='email' style={{color: this.styleRed(email)}}>
+            Email (Not shared, used only by me if there is a problem){this.addRequired(email)}
+          </label>
+          <textarea id='email' name='email' placeholder='you@yourwebsite.com' rows='1' value={email} onChange={this.handleEmail}/>
 
-          <input type='submit' value='Submit' />
+          <input
+            disabled={this.disableButton()}
+            className={'submit ' + (this.disableButton() ? 'disabled' : 'enabled')}
+            type='submit' value='Submit' />
         </form>
-        <label style={{color: 'red'}}>{problem}</label>
         {fireRedirect && (
           <Redirect to='/'/>
         )}

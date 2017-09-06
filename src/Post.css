@@ -14,19 +14,26 @@ textarea, select {
   resize: vertical;
 }
 
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
+.submit {
   border-radius: 4px;
+  border: none;
+  color: white;
   cursor: pointer;
+  margin: 8px 0;
+  padding: 14px 20px;
+  width: 100%;
 }
 
-input[type=submit]:hover {
+.enabled {
+  background-color: #4CAF50;
+}
+
+.enabled:hover {
   background-color: #45A049;
+}
+
+.disabled {
+  background-color: #9E9E9E;
 }
 
 #Post-div {
