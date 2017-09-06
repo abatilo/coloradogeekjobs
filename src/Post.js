@@ -68,7 +68,7 @@ class Post extends React.Component {
       return;
     }
 
-    console.log(this.state);
+    this.setState({ problem: '' });
     fetch(`${this.props.post}`, {
       method: 'POST',
       headers: {
@@ -99,6 +99,8 @@ class Post extends React.Component {
 
   render() {
     const { fireRedirect } = this.state;
+    const { problem } = this.state;
+
     return (
       <div id='Post-div'>
         <form onSubmit={this.handleSubmit}>
@@ -419,7 +421,7 @@ class Post extends React.Component {
 
           <input type='submit' value='Submit' />
         </form>
-        <label style={{color: 'red'}}>{this.state.problem}</label>
+        <label style={{color: 'red'}}>{problem}</label>
         {fireRedirect && (
           <Redirect to='/'/>
         )}
