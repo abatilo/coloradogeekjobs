@@ -1,9 +1,12 @@
+#MainContainer {
+  margin: 14px;
+}
+
 #Home-div {
   border-radius: 5px;
   background-color: #E0E0E0;
-  padding: 8px;
-  margin: 14px;
   overflow: hidden;
+  padding: 0px 8px 0px 8px;
 }
 
 #Job-list {
@@ -18,7 +21,7 @@
 
 @media (min-width: 768px) {
   #Home-div {
-    width: 768px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
   }

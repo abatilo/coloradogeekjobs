@@ -48,29 +48,31 @@ class Home extends Component {
 
   render() {
     return (
-      <div id='Home-div'>
-        <Header />
-        <div id='Job-list'>
-          { this.state.jobs.length > 0 ?
-            this.state.jobs.map((job) =>
-              <Job
-                click={this.handleClick}
-                key={job.id}
-                id={job.id}
-                title={job.title}
-                company={job.company}
-                city={job.city}
-                date={job.date}
-                selectedJob={this.state.selectedJobId}
-                className={'Job' + (this.state.selectedJobId === job.id ? ' Job-selected' : '')}
-              />)
-           : 'There hasn\'t been a new job posted in the last 30 days.' }
+      <div id='MainContainer'>
+        <div id='Home-div'>
+          <Header />
+          <div id='Job-list'>
+            { this.state.jobs.length > 0 ?
+              this.state.jobs.map((job) =>
+                <Job
+                  click={this.handleClick}
+                  key={job.id}
+                  id={job.id}
+                  title={job.title}
+                  company={job.company}
+                  city={job.city}
+                  date={job.date}
+                  selectedJob={this.state.selectedJobId}
+                  className={'Job' + (this.state.selectedJobId === job.id ? ' Job-selected' : '')}
+                />)
+             : 'There hasn\'t been a new job posted in the last 30 days.' }
+          </div>
+          { this.state.selectedJobId !== -1 ?
+            <SelectedJob className='.SelectedJob'
+              description={this.state.selectedJobDescription}
+              how={this.state.selectedJobHow}
+            /> : null }
         </div>
-        { this.state.selectedJobId !== -1 ?
-        <SelectedJob className='.SelectedJob'
-          description={this.state.selectedJobDescription}
-          how={this.state.selectedJobHow}
-        /> : null }
       </div>
     );
   }

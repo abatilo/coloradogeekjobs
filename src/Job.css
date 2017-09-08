@@ -1,9 +1,8 @@
 .Job {
   text-decoration: none;
   cursor: pointer;
-  padding: 8px;
-  margin: 4px;
   border-radius: 5px;
+  padding: 8px;
 }
 
 .Job:hover {
