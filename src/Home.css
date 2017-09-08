@@ -6,7 +6,7 @@
   border-radius: 5px;
   background-color: #E0E0E0;
   overflow: hidden;
-  padding: 0px 8px 0px 8px;
+  padding: 8px;
 }
 
 #Job-list {
@@ -15,6 +15,12 @@
   height: 100%;
   left: 0;
   top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#twitter {
+  margin: 14px;
   width: 100%;
   text-align: center;
 }
