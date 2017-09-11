@@ -1,25 +1,25 @@
-.Job {
+.job {
   text-decoration: none;
   cursor: pointer;
   border-radius: 5px;
   padding: 8px;
 }
 
-.Job:hover {
+.job:hover {
   background-color: #BDBDBD;
 }
 
-.Job-selected {
+.jobSelected {
   background-color: #BDBDBD;
 }
 
-.Job-title {
+#jobTitle {
   color: #1E88E5;
   font-size: large;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.Job-subtitle {
+#jobSubtitle {
   font-size: small;
 }

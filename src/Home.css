@@ -1,15 +1,15 @@
-#MainContainer {
+#mainContainer {
   margin: 14px;
 }
 
-#Home-div {
+#homeDiv {
   border-radius: 5px;
   background-color: #E0E0E0;
   overflow: hidden;
   padding: 8px;
 }
 
-#Job-list {
+#jobList {
   position: relative;
   float: left;
   height: 100%;
@@ -26,13 +26,13 @@
 }
 
 @media (min-width: 768px) {
-  #Home-div {
+  #homeDiv {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  #Job-list {
+  #jobList {
     width: 40%;
     text-align: left;
   }

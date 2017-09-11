@@ -117,7 +117,7 @@ class Post extends React.Component {
     } = this.state;
 
     return (
-      <div id='Post-div'>
+      <div id='postDiv'>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='title' style={{color: this.styleRed(title)}}>
             Title{this.addRequired(title)}

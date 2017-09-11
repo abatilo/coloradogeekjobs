@@ -4,8 +4,8 @@ import Text from 'react-format-text';
 
 function SelectedJob(props) {
   return (
-    <div className='SelectedJob'>
-      <div className='InsideSelectedJob'>
+    <div id='selectedJob'>
+      <div id='insideSelectedJob'>
         <label htmlFor='description' id='descriptionLabel'>Description</label><br/>
         {console.log(props.description)}
         <Text id='description' name='description'>

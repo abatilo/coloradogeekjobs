@@ -48,10 +48,10 @@ class Home extends Component {
 
   render() {
     return (
-      <div id='MainContainer'>
-        <div id='Home-div'>
+      <div id='mainContainer'>
+        <div id='homeDiv'>
           <Header />
-          <div id='Job-list'>
+          <div id='jobList'>
             { this.state.jobs.length > 0 ?
               this.state.jobs.map((job) =>
                 <Job
@@ -63,12 +63,12 @@ class Home extends Component {
                   city={job.city}
                   date={job.date}
                   selectedJob={this.state.selectedJobId}
-                  className={'Job' + (this.state.selectedJobId === job.id ? ' Job-selected' : '')}
+                  className={'job' + (this.state.selectedJobId === job.id ? ' jobSelected' : '')}
                 />)
              : 'There hasn\'t been a new job posted in the last 30 days.' }
           </div>
           { this.state.selectedJobId !== -1 ?
-            <SelectedJob className='.SelectedJob'
+            <SelectedJob
               description={this.state.selectedJobDescription}
               how={this.state.selectedJobHow}
             /> : null }

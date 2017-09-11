@@ -1,16 +1,16 @@
-.SelectedJob {
+#selectedJob {
   text-align: left;
   position: relative;
   width: 100%;
   float: left;
 }
 
-.InsideSelectedJob {
+#insideSelectedJob {
   padding: 0px 0px 0px 8px;
 }
 
 @media (min-width: 768px) {
-  .SelectedJob {
+  #selectedJob {
     width: 60%;
   }
 }
