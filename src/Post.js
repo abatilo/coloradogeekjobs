@@ -10,7 +10,7 @@ class Post extends React.Component {
       city: 'Denver'
     };
     // Bind all the handlers
-    this.handleCity = this.handleCity.bind(this);
+    // this.handleCity = this.handleCity.bind(this);
     this.handleCompany = this.handleCompany.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
@@ -48,37 +48,11 @@ class Post extends React.Component {
     this.setState({url: event.target.value});
   }
 
-  disableButton() {
-      return (
-        !this.state.title ||
-        !this.state.company ||
-        !this.state.url ||
-        !this.state.description ||
-        !this.state.how ||
-        !this.state.email
-      );
-  }
-
-  styleRed(field) {
-    return field ? null : '#EF5350';
-  }
-
   addRequired(field) {
     return field ? null : ' - Required';
   }
 
   handleSubmit(event) {
-    if (!this.state.city ||
-        !this.state.company ||
-        !this.state.description ||
-        !this.state.email ||
-        !this.state.how ||
-        !this.state.title ||
-        !this.state.url) {
-      event.preventDefault();
-      return;
-    }
-
     fetch(`${this.props.post}`, {
       method: 'POST',
       headers: {
@@ -119,20 +93,20 @@ class Post extends React.Component {
     return (
       <div id='postDiv'>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor='title' style={{color: this.styleRed(title)}}>
+          <label htmlFor='title'>
             Title{this.addRequired(title)}
           </label>
-          <textarea id='title' name='title' placeholder='Software Engineer' rows='1' value={title} onChange={this.handleTitle}/>
+          <textarea id='title' name='title' placeholder='Software Engineer' rows='1' value={title} onChange={this.handleTitle} required/>
 
-          <label htmlFor="company" style={{color: this.styleRed(company)}}>
+          <label htmlFor="company">
             Company{this.addRequired(company)}
           </label>
-          <textarea id='company' name='company' placeholder='YourCompany LLC' rows='1' value={company} onChange={this.handleCompany}/>
+          <textarea id='company' name='company' placeholder='YourCompany LLC' rows='1' value={company} onChange={this.handleCompany} required />
 
-          <label htmlFor='url' style={{color: this.styleRed(url)}}>
+          <label htmlFor='url'>
             URL{this.addRequired(url)}
           </label>
-          <textarea id='url' name='url' placeholder='https://' rows='1' value={url} onChange={this.handleURL}/>
+          <textarea id='url' name='url' placeholder='https://' rows='1' value={url} onChange={this.handleURL} required />
 
           <label htmlFor='city'>City</label>
           <select id='city' name='city' value={city} onChange={this.handleCity}>
@@ -431,24 +405,23 @@ class Post extends React.Component {
             <option value='Yuma'>Yuma</option>
           </select>
 
-          <label htmlFor='description' style={{color: this.styleRed(description)}}>
+          <label htmlFor='description'>
             Description{this.addRequired(description)}
           </label>
-          <textarea id='description' name='description' placeholder='Write code for...' rows='3' value={description} onChange={this.handleDescription}/>
+          <textarea id='description' name='description' placeholder='Write code for...' rows='3' value={description} onChange={this.handleDescription} required />
 
-          <label htmlFor='how' style={{color: this.styleRed(how)}}>
+          <label htmlFor='how'>
             How to apply{this.addRequired(how)}
           </label>
-          <textarea id='how' name='how' placeholder='Send an email to...' rows='2' value={how} onChange={this.handleHow}/>
+          <textarea id='how' name='how' placeholder='Send an email to...' rows='2' value={how} onChange={this.handleHow} required />
 
-          <label htmlFor='email' style={{color: this.styleRed(email)}}>
+          <label htmlFor='email'>
             Email (Not shared, used only by me if there is a problem){this.addRequired(email)}
           </label>
-          <textarea id='email' name='email' placeholder='you@yourwebsite.com' rows='1' value={email} onChange={this.handleEmail}/>
+          <textarea id='email' name='email' placeholder='you@yourwebsite.com' rows='1' value={email} onChange={this.handleEmail} required />
 
           <input
-            disabled={this.disableButton()}
-            className={'submit ' + (this.disableButton() ? 'disabled' : 'enabled')}
+            className={'submit enabled'}
             type='submit' value='Submit' />
         </form>
         {fireRedirect && (
