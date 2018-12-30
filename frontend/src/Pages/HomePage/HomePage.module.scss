@@ -1,0 +1,15 @@
+.app {
+  text-align: center;
+
+  .internal {
+    font-style: italic;
+
+    .colored {
+      color: red;
+    }
+  }
+}
+
+.colored {
+  color: blue;
+}

@@ -1,0 +1,33 @@
+@import '../../variables';
+@import 'sass-material-colors';
+
+$post-height: 40px;
+.post {
+  border-bottom: 2px solid #aaa;
+  height: $post-height;
+  line-height: $post-height;
+  padding: $padding-small;
+  background: material-color('yellow', '100');
+
+  .company {
+    font-size: x-large;
+    font-weight: bold;
+    margin-left: $padding-medium;
+  }
+
+  .title {
+    font-size: large;
+    margin-left: $padding-small;
+  }
+
+  .date {
+    float: right;
+    font-size: medium;
+    margin-left: $padding-small;
+    opacity:0.5;
+  }
+
+  &:hover {
+    background: material-color('blue', '200');
+  }
+}

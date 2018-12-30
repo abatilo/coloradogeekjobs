@@ -1,0 +1,15 @@
+@import '../../variables';
+@import 'sass-material-colors';
+
+.banner {
+  text-align: center;
+  margin: $padding-medium;
+
+  .button {
+    background-color: material-color('red', '100');
+    margin: auto;
+    padding: $padding-medium;
+    border-radius: $rounded-corners;
+    width: 100px;
+  }
+}
