@@ -1,6 +1,15 @@
 module.exports = {
   "parser": "babel-eslint",
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react",
+    "prettier/unicorn",
+  ],
+  "plugins": [
+    "prettier",
+    "unicorn"
+  ],
   "env": {
     "jest": true,
     "browser": true
