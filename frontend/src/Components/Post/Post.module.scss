@@ -3,11 +3,12 @@
 
 $post-height: 40px;
 .post {
+  background: material-color('yellow', '100');
   border-bottom: 2px solid #aaa;
+  cursor: pointer;
   height: $post-height;
   line-height: $post-height;
   padding: $padding-small;
-  background: material-color('yellow', '100');
 
   .company {
     font-size: x-large;

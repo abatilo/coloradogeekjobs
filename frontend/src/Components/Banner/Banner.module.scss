@@ -2,14 +2,15 @@
 @import 'sass-material-colors';
 
 .banner {
-  text-align: center;
   margin: $padding-medium;
+  text-align: center;
 
   .button {
     background-color: material-color('red', '100');
+    border-radius: $rounded-corners;
+    cursor: pointer;
     margin: auto;
     padding: $padding-medium;
-    border-radius: $rounded-corners;
     width: 100px;
   }
 }
