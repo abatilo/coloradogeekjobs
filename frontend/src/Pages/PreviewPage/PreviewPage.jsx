@@ -9,7 +9,15 @@ import Button from '../../Components/Button/Button';
 
 const NOW = new Date();
 const PreviewPage = ({
-  history, jobTitle, jobType, jobDescription, companyName, companyWebsite, companyDescription, how
+  history,
+  jobTitle,
+  jobType,
+  jobDescription,
+  companyName,
+  companyWebsite,
+  companyDescription,
+  how,
+  addJob,
 }) => (
   <div className={styles.preview}>
     <div className={styles.jobTitle}>
@@ -49,7 +57,19 @@ const PreviewPage = ({
     </div>
 
     <div style={{paddingTop: '8px'}}>
-      <Button onClick={() => history.push('/')}>
+      <Button onClick={() => {
+        const newJob = {
+          jobTitle,
+          jobType,
+          jobDescription,
+          companyName,
+          companyWebsite,
+          companyDescription,
+          how,
+        };
+        addJob(newJob);
+        history.push('/')
+      }}>
         Submit
       </Button>
     </div>
@@ -66,6 +86,7 @@ PreviewPage.propTypes = {
   companyWebsite: PropTypes.string.isRequired,
   companyDescription: PropTypes.string.isRequired,
   how: PropTypes.string.isRequired,
+  addJob: PropTypes.func.isRequired,
 }
 
 export default withRouter(PreviewPage);

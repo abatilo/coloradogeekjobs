@@ -13,47 +13,23 @@ class App extends Component {
   // It's not that much state though, so passing it through like this seems
   // fine.
   state = {
-    jobTitle: 'Software Engineer',
+    jobTitle: '',
     jobType: 'full',
-    jobDescription: 'We are seeking multiple remote or NYC based Web Developers to work with us on an ongoing and/or per-project basis.\n\n**Our ideal candidate must have**:\n* Prior experience in working with a digital agency\n* Advanced front-end development experience.',
-    companyName: 'Conga',
-    companyWebsite: 'https://getconga.com',
-    companyDescription: 'We have free lunch',
-    how: 'Send an email to aaronbatilo@gmail.com',
-    email: 'email@email',
+    jobDescription: '',
+    companyName: '',
+    companyWebsite: '',
+    companyDescription: '',
+    how: '',
+    email: '',
     allowPreview: true,
     jobs: [],
   };
 
+  // Must be will mount because otherwise we can't link directly to a post.
+  // This is because WillMount will ensure we fetch data before we render, and
+  // we evaluate routes while rendering.
   componentWillMount() {
-    this.setState({
-      jobs: [
-        {
-          key: 0,
-          id: 0,
-          date: 1546289218682,
-          jobTitle: 'Software Engineer',
-          jobType: 'full',
-          jobDescription: 'We are seeking multiple remote or NYC based Web Developers to work with us on an ongoing and/or per-project basis.\n\n**Our ideal candidate must have**:\n* Prior experience in working with a digital agency\n* Advanced front-end development experience.',
-          companyName: 'Conga',
-          companyWebsite: 'https://getconga.com',
-          companyDescription: 'We have free lunch',
-          how: 'Send an email to aaronbatilo@gmail.com',
-        },
-        {
-          key: 1,
-          id: 1,
-          date: 1546289218682,
-          jobTitle: 'Software Engineer',
-          jobType: 'full',
-          jobDescription: 'We are seeking multiple remote or NYC based Web Developers to work with us on an ongoing and/or per-project basis.\n\n**Our ideal candidate must have**:\n* Prior experience in working with a digital agency\n* Advanced front-end development experience.',
-          companyName: 'Conga',
-          companyWebsite: 'https://getconga.com',
-          companyDescription: 'We have free lunch',
-          how: 'Send an email to aaronbatilo@gmail.com',
-        }
-      ]
-    });
+    this.setState({ jobs: this.getJobs() });
   }
 
   changeJobTitle = ({target: { value: jobTitle }}) => {
@@ -92,6 +68,48 @@ class App extends Component {
     this.setState({ allowPreview: true });
   }
 
+  getJobs = () => ([
+    {
+      key: 0,
+      id: 0,
+      date: 1546289218682,
+      jobTitle: 'Software Engineer',
+      jobType: 'full',
+      jobDescription: 'We are seeking multiple remote or NYC based Web Developers to work with us on an ongoing and/or per-project basis.\n\n**Our ideal candidate must have**:\n* Prior experience in working with a digital agency\n* Advanced front-end development experience.',
+      companyName: 'Conga',
+      companyWebsite: 'https://getconga.com',
+      companyDescription: 'We have free lunch',
+      how: 'Send an email to aaronbatilo@gmail.com',
+    },
+    {
+      key: 1,
+      id: 1,
+      date: 1546289218682,
+      jobTitle: 'Software Engineer',
+      jobType: 'full',
+      jobDescription: 'We are seeking multiple remote or NYC based Web Developers to work with us on an ongoing and/or per-project basis.\n\n**Our ideal candidate must have**:\n* Prior experience in working with a digital agency\n* Advanced front-end development experience.',
+      companyName: 'Conga',
+      companyWebsite: 'https://getconga.com',
+      companyDescription: 'We have free lunch',
+      how: 'Send an email to aaronbatilo@gmail.com',
+    }
+  ])
+
+  addJob = (newJob) => {
+    const { jobs: oldJobs } = this.state;
+    const newJobWithKey = {
+      ...newJob,
+      key: oldJobs.length,
+      id: oldJobs.length,
+      date: new Date().getTime(),
+    };
+    this.setState({ jobs: [...oldJobs, newJobWithKey]},
+    () => {
+      const { jobs: newJobs } = this.state;
+      console.log(newJobs);
+    });
+  }
+
   render() {
     const { allowPreview, jobs } = this.state;
     const submitProps = {
@@ -115,7 +133,7 @@ class App extends Component {
             <Route path="/submit" exact render={() => (<AsyncSubmit {...submitProps} />)} />
             <Route path="/preview" exact render={() => {
               if (allowPreview) {
-                return <AsyncPreview {...this.state} />
+                return <AsyncPreview {...this.state} addJob={this.addJob} />
               }
               return <Redirect to="/submit" />
             }} />
