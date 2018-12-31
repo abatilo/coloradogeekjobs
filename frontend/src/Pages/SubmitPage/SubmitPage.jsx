@@ -76,7 +76,7 @@ class SubmitPage extends Component {
     } = radioValues;
 
     return (
-      <form className={styles.submit}>
+      <div className={styles.submit}>
         <SubmissionInput inputLabel="Job title" optionsLabel="Example: Software Engineer, Senior Software Engineer, etc">
           <input type="text" onChange={this.changeJobTitle} value={jobTitle}/>
         </SubmissionInput>
@@ -108,7 +108,7 @@ class SubmitPage extends Component {
             Submit
           </Button>
         </div>
-      </form>
+      </div>
     );
   }
 };

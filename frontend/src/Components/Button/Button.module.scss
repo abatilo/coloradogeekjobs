@@ -9,4 +9,8 @@
   padding: $padding-small;
   text-align: center;
   width: 100px;
+
+  &:hover {
+    background-color: material-color('yellow', '200');
+  }
 }
