@@ -1,0 +1,50 @@
+@import '../../variables';
+@import 'sass-material-colors';
+
+.view {
+  background: material-color('blue', '100');
+  padding: $padding-medium;
+  border-radius: $rounded-corners;
+
+  .jobTitle {
+    background: material-color('red', '100');
+    border-radius: $rounded-corners;
+    padding: $padding-small;
+    font-size: xx-large;
+    font-weight: bold;
+    padding-bottom: $padding-medium;
+
+    .date {
+      font-size: medium;
+      font-weight: normal;
+      opacity: 0.7;
+    }
+  }
+
+  .jobType {
+    display: none;
+  }
+
+  .jobDescription {
+
+  }
+
+  .companyName {
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .companyDescription {
+
+  }
+
+  .how {
+    background: material-color('yellow', '100');
+    border-radius: $rounded-corners;
+    padding: $padding-small;
+  }
+
+  .email {
+
+  }
+}

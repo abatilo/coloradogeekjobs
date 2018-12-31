@@ -1,32 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import PropTypes from 'prop-types';
 import Banner from '../../Components/Banner/Banner';
 import PostCollection from '../../Components/PostCollection/PostCollection';
 import Post from '../../Components/Post/Post';
 
-const jobs = [
-  {
-    key: 0,
-    title: 'Software Engineer',
-    company: 'Conga',
-    date: 'Dec 29'
-  },
-  {
-    key: 1,
-    title: 'Senior Software Engineer',
-    company: 'Conga',
-    date: 'Dec 28'
-  }
-];
+class HomePage extends Component {
 
-export default () => (
-  <div>
-    <Banner />
-    <PostCollection>
-      {
-        jobs.map(job => (
-            <Post {...job} />
-        ))
-      }
-    </PostCollection>
-  </div>
-);
+  onClick = (id) => {
+    const { history } = this.props;
+    history.push(`/posts/${id}`);
+  }
+
+  render() {
+    const {jobs} = this.props;
+    return (
+      <div>
+        <Banner />
+        <PostCollection>
+          {
+            jobs.map(job => (
+                <Post {...job} onClick={this.onClick} />
+            ))
+          }
+        </PostCollection>
+      </div>
+    )
+  }
+}
+
+HomePage.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+  jobs: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.number,
+    id: PropTypes.number,
+    jobTitle: PropTypes.string,
+    companyName: PropTypes.string,
+    companyWebsite: PropTypes.string,
+    companyDescription: PropTypes.string,
+    how: PropTypes.string,
+    date: PropTypes.number,
+  })).isRequired
+}
+
+export default withRouter(HomePage);
