@@ -1,0 +1,12 @@
+@import '../../variables';
+@import 'sass-material-colors';
+
+.submit {
+  background: material-color('blue', '100');
+  padding: $padding-medium;
+  border-radius: $rounded-corners;
+
+  .button {
+    margin-top: $padding-large;
+  }
+}

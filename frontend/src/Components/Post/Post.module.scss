@@ -3,7 +3,7 @@
 
 $post-height: 40px;
 .post {
-  background: material-color('yellow', '100');
+  background: material-color('blue', '100');
   border-bottom: 2px solid #aaa;
   cursor: pointer;
   height: $post-height;
@@ -29,6 +29,6 @@ $post-height: 40px;
   }
 
   &:hover {
-    background: material-color('blue', '200');
+    background: material-color('yellow', '200');
   }
 }

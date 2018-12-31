@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './PostCollection.module.scss';
 
 const PostCollection = ({children}) => (
-  <div className={styles.postCollection}>
+  <div>
     {children}
   </div>
 )

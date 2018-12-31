@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import Button from '../Button/Button';
 import styles from './Banner.module.scss';
 
 class Banner extends Component {
@@ -21,15 +22,9 @@ class Banner extends Component {
         <p>
           ColoradoGeekJobs is your one stop shop for finding a developer job in Colorado.
         </p>
-        <div
-          className={styles.button}
-          role="button"
-          tabIndex={0}
-          onClick={this.goToSubmitJob}
-          onKeyPress={this.handleKeyDown}
-        >
+        <Button onClick={this.goToSubmitJob}>
           Post a job
-        </div>
+        </Button>
       </div>
     )
   }

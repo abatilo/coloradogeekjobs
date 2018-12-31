@@ -2,7 +2,7 @@
 @import 'sass-material-colors';
 
 .banner {
-  margin: $padding-medium;
+  margin-bottom: $padding-medium;
   text-align: center;
 
   .button {
@@ -10,7 +10,7 @@
     border-radius: $rounded-corners;
     cursor: pointer;
     margin: auto;
-    padding: $padding-medium;
+    padding: $padding-small;
     width: 100px;
   }
 }

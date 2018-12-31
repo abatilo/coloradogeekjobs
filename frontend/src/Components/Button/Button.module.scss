@@ -1,0 +1,12 @@
+@import '../../variables';
+@import 'sass-material-colors';
+
+.button {
+  background-color: material-color('red', '100');
+  border-radius: $rounded-corners;
+  cursor: pointer;
+  margin: auto;
+  padding: $padding-small;
+  text-align: center;
+  width: 100px;
+}
