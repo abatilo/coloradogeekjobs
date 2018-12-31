@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import PropTypes from 'prop-types';
+import ReactMde from 'react-mde';
+import Showdown from 'showdown';
+import XssFilter from 'showdown-xss-filter';
 import SubmissionInput from '../../Components/SubmissionInput/SubmissionInput';
 import Button from '../../Components/Button/Button';
+import 'react-mde/lib/styles/css/react-mde-all.css';
+import 'draft-js/dist/Draft.css';
 import styles from './SubmitPage.module.scss';
 
 const radioValues = {
@@ -13,6 +18,13 @@ const radioValues = {
 };
 
 class SubmitPage extends Component {
+  constructor(props) {
+    super(props);
+    this.converter = new Showdown.Converter({
+      extensions: [XssFilter]
+    });
+  }
+
   submit = () =>{
     const { history, changeAllowPreview } = this.props;
     changeAllowPreview();
@@ -57,7 +69,12 @@ class SubmitPage extends Component {
         </SubmissionInput>
 
         <SubmissionInput inputLabel="Job Description" optionsLabel="What does this job require?">
-          <textarea rows="8" cols="70" onChange={changeJobDescription} value={jobDescription} />
+          <ReactMde
+            className={styles.mde}
+            onChange={changeJobDescription}
+            value={jobDescription}
+            generateMarkdownPreview={markdown => Promise.resolve(this.converter.makeHtml(markdown))}
+          />
         </SubmissionInput>
 
         <SubmissionInput inputLabel="Company Name" optionsLabel="">
@@ -69,11 +86,21 @@ class SubmitPage extends Component {
         </SubmissionInput>
 
         <SubmissionInput inputLabel="Company Description" optionsLabel="Example: We build drones on a blockchain">
-          <textarea rows="5" cols="70" onChange={changeCompanyDescription} value={companyDescription} />
+          <ReactMde
+            className={styles.mde}
+            onChange={changeCompanyDescription}
+            value={companyDescription}
+            generateMarkdownPreview={markdown => Promise.resolve(this.converter.makeHtml(markdown))}
+          />
         </SubmissionInput>
 
         <SubmissionInput inputLabel="How to apply" optionsLabel="Example: Send a resume to you@yourcompany.com">
-          <textarea rows="3" cols="70" onChange={changeHow} value={how} />
+          <ReactMde
+            className={styles.mde}
+            onChange={changeHow}
+            value={how}
+            generateMarkdownPreview={markdown => Promise.resolve(this.converter.makeHtml(markdown))}
+          />
         </SubmissionInput>
 
         <SubmissionInput inputLabel="Your email" optionsLabel="Not shared. We only use it to contact you if there's a problem.">

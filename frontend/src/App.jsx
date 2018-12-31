@@ -64,20 +64,24 @@ class App extends Component {
     this.setState({ jobType });
   };
 
-  changeJobDescription = ({target: { value: jobDescription }}) => {
-    this.setState({ jobDescription });
+  changeJobDescription = (value) => {
+    this.setState({ jobDescription: value });
   }
 
   changeCompanyName = ({target: { value: companyName }}) => {
     this.setState({ companyName });
   }
 
-  changeCompanyDescription = ({target: { value: companyDescription }}) => {
-    this.setState({ companyDescription });
+  changeCompanyWebsite = ({target: { value: companyWebsite }}) => {
+    this.setState({ companyWebsite });
   }
 
-  changeHow = ({target: { value: how }}) => {
-    this.setState({ how });
+  changeCompanyDescription = (value) => {
+    this.setState({ companyDescription: value });
+  }
+
+  changeHow = (value) => {
+    this.setState({ how: value });
   }
 
   changeEmail = ({target: { value: email }}) => {
@@ -96,6 +100,7 @@ class App extends Component {
       changeJobType: this.changeJobType,
       changeJobDescription: this.changeJobDescription,
       changeCompanyName: this.changeCompanyName,
+      changeCompanyWebsite: this.changeCompanyWebsite,
       changeCompanyDescription: this.changeCompanyDescription,
       changeHow: this.changeHow,
       changeEmail: this.changeEmail,
