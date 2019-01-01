@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import ApolloClient from "apollo-boost";
+import ApolloClient, { gql } from 'apollo-boost';
 import { withApollo } from 'react-apollo';
-import gql from "graphql-tag";
 import PropTypes from 'prop-types';
 import styles from './App.module.scss';
 import asyncComponent from './Components/AsyncComponent';
@@ -26,15 +25,7 @@ class App extends Component {
     how: '',
     email: '',
     allowPreview: true,
-    jobs: [],
   };
-
-  // Must be will mount because otherwise we can't link directly to a post.
-  // This is because WillMount will ensure we fetch data before we render, and
-  // we evaluate routes while rendering.
-  async componentWillMount() {
-    this.setState({ jobs: await this.getJobs() });
-  }
 
   changeJobTitle = ({target: { value: jobTitle }}) => {
     this.setState({ jobTitle });
@@ -90,23 +81,8 @@ class App extends Component {
     return [...allJobs];
   }
 
-  addJob = (newJob) => {
-    const { jobs: oldJobs } = this.state;
-    const newJobWithKey = {
-      ...newJob,
-      key: oldJobs.length,
-      id: oldJobs.length,
-      date: new Date().getTime(),
-    };
-    this.setState({ jobs: [...oldJobs, newJobWithKey]},
-    () => {
-      const { jobs: newJobs } = this.state;
-      console.log(newJobs);
-    });
-  }
-
   render() {
-    const { allowPreview, jobs } = this.state;
+    const { allowPreview } = this.state;
     const submitProps = {
       ...this.state,
       changeJobTitle: this.changeJobTitle,
@@ -124,18 +100,16 @@ class App extends Component {
       <div className={styles.app}>
         <Router>
           <Switch>
-            <Route path="/" exact render={() => <AsyncHome jobs={jobs} />} />
-            <Route path="/submit" exact render={() => (<AsyncSubmit {...submitProps} />)} />
-            <Route path="/preview" exact render={() => {
+            <Route path="/" exact component={AsyncHome} />
+            <Route path="/submit" exact strict render={() => (<AsyncSubmit {...submitProps} />)} />
+            <Route path="/preview" exact strict render={() => {
               if (allowPreview) {
-                return <AsyncPreview {...this.state} addJob={this.addJob} />
+                return <AsyncPreview {...this.state} />
               }
               return <Redirect to="/submit" />
             }} />
-            <Route path="/submit" exact render={() => (<AsyncSubmit {...submitProps} />)} />
-            <Route path="/posts/:id" exact render={({ match: { params: { id: jobID }}}) => (
-              <AsyncView jobID={parseInt(jobID, 10)} />
-            )} />
+            <Route path="/submit" exact strict render={() => (<AsyncSubmit {...submitProps} />)} />
+            <Route path="/posts/:id" exact strict component={AsyncView} />
           </Switch>
         </Router>
       </div>

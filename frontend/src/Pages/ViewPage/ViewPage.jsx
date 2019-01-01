@@ -1,8 +1,9 @@
 import React  from 'react';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
+import { withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import ReactMarkdown from 'react-markdown';
-import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import ErrorMessage from '../../Components/ErrorMessage/ErrorMessage';
 import styles from './ViewPage.module.scss';
@@ -22,7 +23,7 @@ query ($jobID: Int!) {
 }
 `;
 
-const ViewPage = ({ jobID }) => (
+const ViewPage = ({ match: { params: { id: jobID }}}) => (
   <Query query={query} variables={{ jobID }}>
     {({ loading, error, data }) => {
       if (loading) return <div />;
@@ -80,7 +81,7 @@ const ViewPage = ({ jobID }) => (
 );
 
 ViewPage.propTypes = {
-  jobID: PropTypes.number.isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
 };
 
-export default ViewPage;
+export default withRouter(ViewPage);
