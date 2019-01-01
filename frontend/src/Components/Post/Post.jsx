@@ -40,7 +40,7 @@ Post.propTypes = {
   id: PropTypes.number.isRequired,
   jobTitle: PropTypes.string.isRequired,
   companyName: PropTypes.string.isRequired,
-  date: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 }
 

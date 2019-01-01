@@ -7,7 +7,7 @@ import Moment from 'react-moment';
 import styles from './PreviewPage.module.scss';
 import Button from '../../Components/Button/Button';
 
-const NOW = new Date();
+const NOW = new Date().toISOString();
 const PreviewPage = ({
   history,
   jobTitle,

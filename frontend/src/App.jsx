@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import ApolloClient from "apollo-boost";
+import { withApollo } from 'react-apollo';
+import gql from "graphql-tag";
+import PropTypes from 'prop-types';
 import styles from './App.module.scss';
 import asyncComponent from './Components/AsyncComponent';
 
@@ -28,8 +32,8 @@ class App extends Component {
   // Must be will mount because otherwise we can't link directly to a post.
   // This is because WillMount will ensure we fetch data before we render, and
   // we evaluate routes while rendering.
-  componentWillMount() {
-    this.setState({ jobs: this.getJobs() });
+  async componentWillMount() {
+    this.setState({ jobs: await this.getJobs() });
   }
 
   changeJobTitle = ({target: { value: jobTitle }}) => {
@@ -68,32 +72,23 @@ class App extends Component {
     this.setState({ allowPreview: true });
   }
 
-  getJobs = () => ([
-    {
-      key: 0,
-      id: 0,
-      date: 1546289218682,
-      jobTitle: 'Software Engineer',
-      jobType: 'full',
-      jobDescription: 'We are seeking multiple remote or NYC based Web Developers to work with us on an ongoing and/or per-project basis.\n\n**Our ideal candidate must have**:\n* Prior experience in working with a digital agency\n* Advanced front-end development experience.',
-      companyName: 'Conga',
-      companyWebsite: 'https://getconga.com',
-      companyDescription: 'We have free lunch',
-      how: 'Send an email to aaronbatilo@gmail.com',
-    },
-    {
-      key: 1,
-      id: 1,
-      date: 1546289218682,
-      jobTitle: 'Software Engineer',
-      jobType: 'full',
-      jobDescription: 'We are seeking multiple remote or NYC based Web Developers to work with us on an ongoing and/or per-project basis.\n\n**Our ideal candidate must have**:\n* Prior experience in working with a digital agency\n* Advanced front-end development experience.',
-      companyName: 'Conga',
-      companyWebsite: 'https://getconga.com',
-      companyDescription: 'We have free lunch',
-      how: 'Send an email to aaronbatilo@gmail.com',
-    }
-  ])
+  getJobs = async () => {
+    const { client } = this.props;
+    const { data: { allJobs }}= await client.query({
+      query: gql`
+      {
+        allJobs {
+          id
+          date
+          jobTitle
+          companyName
+        }
+      }
+      `
+    });
+
+    return [...allJobs];
+  }
 
   addJob = (newJob) => {
     const { jobs: oldJobs } = this.state;
@@ -138,14 +133,9 @@ class App extends Component {
               return <Redirect to="/submit" />
             }} />
             <Route path="/submit" exact render={() => (<AsyncSubmit {...submitProps} />)} />
-            <Route path="/posts/:id" exact render={({match: { params: { id: pathID }}}) => {
-              const pathIDAsNumber = parseInt(pathID, 10);
-              const selectedJob = jobs.find(({id}) => id === pathIDAsNumber);
-              if (selectedJob) {
-                return <AsyncView {...selectedJob} />
-              }
-              return <Redirect to="/" />
-            }} />
+            <Route path="/posts/:id" exact render={({ match: { params: { id: jobID }}}) => (
+              <AsyncView jobID={parseInt(jobID, 10)} />
+            )} />
           </Switch>
         </Router>
       </div>
@@ -153,4 +143,8 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  client: PropTypes.instanceOf(ApolloClient).isRequired,
+}
+
+export default withApollo(App);

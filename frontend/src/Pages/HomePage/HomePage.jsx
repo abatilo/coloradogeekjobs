@@ -14,17 +14,28 @@ class HomePage extends Component {
   }
 
   render() {
-    const {jobs} = this.props;
+    const { jobs } = this.props;
+    if (jobs.length > 0) {
+      return (
+        <div>
+          <Banner />
+          <PostCollection>
+            {
+              jobs.map(job => (
+                  <Post {...job} key={job.id} onClick={this.onClick} />
+              ))
+            }
+          </PostCollection>
+        </div>
+      )
+    }
+    // TODO Style this better
     return (
       <div>
         <Banner />
-        <PostCollection>
-          {
-            jobs.map(job => (
-                <Post {...job} onClick={this.onClick} />
-            ))
-          }
-        </PostCollection>
+        <div style={{ textAlign: 'center' }}>
+          Nothing has been posted recently
+        </div>
       </div>
     )
   }
@@ -40,7 +51,7 @@ HomePage.propTypes = {
     companyWebsite: PropTypes.string,
     companyDescription: PropTypes.string,
     how: PropTypes.string,
-    date: PropTypes.number,
+    date: PropTypes.string,
   })).isRequired
 }
 
